@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/k6gHVkv/Discord-Bot-Template.png" />
+  <img src="https://i.ibb.co/0rDjksj/Discord-Bot-Template.png" />
 </p>
 
 ## Description
