@@ -8,10 +8,24 @@ export default class InteractionCreateEvent extends BaseEvent {
   }
 
   async run(interaction: BaseCommandInteraction): Promise<any> {
-    if (interaction.isApplicationCommand()) {
+    if (
+      interaction.isCommand() ||
+      interaction.isMessageContextMenu() ||
+      interaction.isUserContextMenu()
+    ) {
       const command = this.client.handler.commands.get(interaction.commandName);
 
-      await command.run(interaction);
+      command && (await command.run(interaction));
+    } else if (interaction.isButton()) {
+      const button = this.client.handler.buttons.get(interaction.customId);
+
+      button && (await button.run(interaction));
+    } else if (interaction.isSelectMenu()) {
+      const selectMenu = this.client.handler.selectMenus.get(
+        interaction.customId,
+      );
+
+      selectMenu && (await selectMenu.run(interaction));
     }
   }
 }
