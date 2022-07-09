@@ -7,4 +7,7 @@ export class User {
 
   @Column({ unique: true })
   username: string;
+
+  @Column({ default: 1000 })
+  points: number;
 }
