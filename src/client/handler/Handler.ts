@@ -31,7 +31,7 @@ export default class Handler {
       const filePath = join(path, file);
       const fileStat = await stat(filePath);
 
-      if (fileStat.isDirectory()) return this.startEvents(join(dir, file));
+      if (fileStat.isDirectory()) await this.startEvents(join(dir, file));
 
       if (extname(file) === '.ts') {
         const { default: Event } = await import(filePath);
@@ -52,7 +52,7 @@ export default class Handler {
       const filePath = join(path, file);
       const fileStat = await stat(filePath);
 
-      if (fileStat.isDirectory()) return this.startCommands(join(dir, file));
+      if (fileStat.isDirectory()) await this.startCommands(join(dir, file));
 
       if (extname(file) === '.ts') {
         const { default: Command } = await import(filePath);
@@ -72,8 +72,7 @@ export default class Handler {
       const filePath = join(path, file);
       const fileStat = await stat(filePath);
 
-      if (fileStat.isDirectory())
-        return this.startInteractions(join(dir, file));
+      if (fileStat.isDirectory()) await this.startInteractions(join(dir, file));
 
       if (extname(file) === '.ts') {
         const { default: Interaction } = await import(filePath);
