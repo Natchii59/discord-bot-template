@@ -2,11 +2,13 @@ import { Client, Intents } from 'discord.js';
 import { ActivityTypes } from 'discord.js/typings/enums';
 
 import Database from './database/Database';
+import Games from './games/Games';
 import Handler from './handler/Handler';
 
 export default class MyClient extends Client {
   public handler: Handler = new Handler(this);
   public database: Database = new Database();
+  public games: Games = new Games();
 
   constructor() {
     super({
