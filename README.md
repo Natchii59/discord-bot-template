@@ -4,7 +4,11 @@
 
 ## Description
 
-Not finished
+Small Nodejs application with the discord.js module to create a Discord bot.
+
+This contains the basis of a bot with an integrated mini game which is BlackJack.
+
+A PostgreSQL database is also integrated to save user points.
 
 ## Author
 
